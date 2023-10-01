@@ -13,6 +13,7 @@ $(TARGET): $(BPF_OBJ)
 	tc qdisc add dev eth0 clsact
 	tc filter add dev eth0 ingress bpf direct-action obj $(BPF_OBJ) sec tc/ingress
 	tc filter add dev eth0 egress bpf direct-action obj $(BPF_OBJ) sec tc/egress
+	go build -o fw ./client/main.go
 
 $(BPF_OBJ): %.o: %.c vmlinux.h
 	clang \
@@ -30,3 +31,4 @@ clean:
 	- tc qdisc del dev eth0 clsact
 	- rm -rf /sys/fs/bpf/tc
 	- rm $(BPF_OBJ)
+	- rm fw

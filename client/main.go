@@ -36,7 +36,7 @@ func main() {
 			if err != nil {
 				log.Fatal(err)
 			}
-			fmt.Printf("ingress traffic from %s sucessfully blocked\n", *ipToBeBlockedFromIngress)
+			fmt.Printf("ingress traffic from %s successfully blocked\n", *ipToBeBlockedFromIngress)
 		}
 		if *ipToBeBlockedToEgress != "" {
 			err = blockedMap.Put(convertIPtoU32(*ipToBeBlockedToEgress), uint32(1))
@@ -45,7 +45,7 @@ func main() {
 			if err != nil {
 				log.Fatal(err)
 			}
-			fmt.Printf("egress traffic to %s sucessfully blocked\n", *ipToBeBlockedToEgress)
+			fmt.Printf("egress traffic to %s successfully blocked\n", *ipToBeBlockedToEgress)
 			if err != nil {
 				log.Fatal(err)
 			}
